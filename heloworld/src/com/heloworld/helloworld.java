@@ -3,6 +3,8 @@ import java.util.Random;
 import java.util.Timer;
 import java.util.TimerTask;
 
+import com.sun.java_cup.internal.runtime.Scanner;
+
 //Timer Task is invoked
 //Integer Generated between 0 and 36
 class Demo extends TimerTask {
@@ -18,16 +20,28 @@ class Demo extends TimerTask {
 
 
 public class helloworld {
+	
+	 public class KeyboardInput extends Thread{
+	        Scanner sc= new Scanner(System.in);
+	        @Override
+	        public void run()
+	        {
+	        while(true)
+	        {
+	        sc.hasNext();
+	        }
 
+	    }
 
-
+	}
+	
 	
     public static void main(String args[]) {
-    	
-    	
+    	readln    	
     	Timer t1 = new Timer();
     	//Timer Scheduled for every 4 seconds
     	t1.schedule(new Demo(), 0,4000);
         
     }
 }
+
