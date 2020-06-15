@@ -1,5 +1,6 @@
 package com.heloworld;
 
+import java.util.Random;
 import java.util.Scanner;
 import java.util.Timer;
 import java.util.TimerTask;
@@ -7,8 +8,10 @@ import java.util.TimerTask;
 import com.heloworld.CountDown.DisplayCountdown;
 
 public class Menu {
-	
+	public int usercredit,piktballglobal = -1;
+	Timer timer;
 		boolean exit;
+		int stoptimer = -1;
 		public static void main(String[] args) {
 			Menu menu = new Menu();
 			menu.runMenu();
@@ -24,11 +27,11 @@ public class Menu {
 		}
 		
 		private int getInput() {
-			Scanner kb = new Scanner (System.in);
+			 Scanner kb = new Scanner (System.in);
 			int choice = -1;
 			while (choice < 0 ) {
 				try {
-					System.out.print("Enter Choice");
+					System.out.println("Enter Choice ");
 					choice = Integer.parseInt(kb.nextLine());
 				}
 				catch (NumberFormatException e) {
@@ -47,11 +50,17 @@ public class Menu {
 				startBall();
 				break;
 			case 2:
-				loadCredit();
-				break;
+			
+			int x=	loadCredit();
+			System.out.print("You have loaded: ");
+			System.out.println(x);
+			break;
+			
 			case 3:
 				pickBall();
 			case 4:
+				timer.cancel();
+				timer.purge();
 				stopBall();
 			default: 
 				System.out.println("Unknown Error");
@@ -73,42 +82,51 @@ public class Menu {
 			System.out.println("3 : Pick  ball and bet");
 			System.out.println("4 : Stop Ball");
 			System.out.println("0 : Exit");
-			
+			System.out.println("\n");
 		}
 		
-		Timer timer;
-		public void CountDown() {
-			timer = new Timer(); timer.schedule(new DisplayCountdown(), 0, 1000); 
-			}
-
-		class DisplayCountdown extends TimerTask { 
-			int seconds = 60;
-		@Override
-		public void run() {
-			System.out.println("PRints every 10sec");
-		}
-		
-		}1
 		private void startBall() {
-			System.out.println("Countdown Beginning"); new CountDown();
+			System.out.println("Countdown Beginning"); 
+		
+			timer = new Timer(); 
+			timer.schedule(new Demo(), 0, 4000); 
 		}
 		
-		
-		
-		
-		
-		private void loadCredit() {
-			//Credit Variable : Accept Amount
-			//Load it, return to main menu
+		class Demo extends TimerTask {
+		    public void run() {
+		    	int rand=0, min=0, max = 36;
+		    	    Random r = new Random();
+		    	    rand = r.nextInt((max - min) + 1) + min;	    
+		    	    System.out.print("Last Winning Number :");
+		    	    System.out.println(rand); // Roulette Number
+		           
+		    	    if (usercredit == rand) { System.out.println("WINNER"); 
+		     }
+		}
+		}
+				
+		static int loadCredit() {
+			System.out.println("Please enter user credit to load");
+	        Scanner d = new Scanner(System.in);
+	        int usercredit = d.nextInt();
+	        return usercredit;
 			
 		}
 		
 		
 		private void pickBall(){
-				
+			System.out.println("Please ball to win");
+
+	        Scanner d = new Scanner(System.in);
+	        int piktball = d.nextInt();
+	        System.out.println(piktball);
+	        piktballglobal = piktball;
+	        runMenu();
 			}
 		
-		private void stopBall(){
+		public void stopBall(){
+	timer.cancel();
+			return;
 			
 		}
 		
