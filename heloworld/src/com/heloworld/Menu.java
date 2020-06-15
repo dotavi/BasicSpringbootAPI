@@ -8,7 +8,7 @@ import java.util.TimerTask;
 import com.heloworld.CountDown.DisplayCountdown;
 
 public class Menu {
-	public int usercredit,piktballglobal = -1;
+	public int globalbet,usercredit,piktballglobal = -1;
 	Timer timer;
 		boolean exit;
 		int stoptimer = -1;
@@ -50,9 +50,12 @@ public class Menu {
 				startBall();
 				break;
 			case 2:
-			
+			System.out.println("Your wallet currently contains :");
+			System.out.println(usercredit);
+			int wallet = usercredit;
 			usercredit=	loadCredit();
-			System.out.print("You have loaded: ");
+			System.out.print("Your new balance is : ");
+			usercredit=	usercredit + wallet;
 			System.out.println(usercredit);
 			break;
 			
@@ -97,15 +100,27 @@ public class Menu {
 		    	int rand=0, min=0, max = 36;
 		    	    Random r = new Random();
 		    	    rand = r.nextInt((max - min) + 1) + min;	    
+		    	    System.out.print("You are bertting :");
+		    	    System.out.println(globalbet); 
+		    	    System.out.print("Last Number Chosen :");
+		    	    System.out.println(piktballglobal);
 		    	    System.out.print("Last Winning Number :");
 		    	    System.out.println(rand); // Roulette Number
-		    		System.out.println(usercredit);
-		    	    
-		    		if (piktballglobal == rand) { 
+		    	  
+		    	    if (piktballglobal == rand) { 
 		    			System.out.println("WINNER");
 		    			//Insert credits and losses here
 		    			usercredit = usercredit +1; 
-		    		}
+		    		}else 
+		    			{
+		    			
+		    			System.out.println("LOSER");
+		    			
+		    			}
+		    	    System.out.print("You now have :");
+		    	    System.out.println(usercredit);
+		    	    
+		    		
 		     }
 		}
 		
@@ -120,14 +135,21 @@ public class Menu {
 		
 		
 		private void pickBall(){
-			System.out.println("Please ball to win");
-
-	        Scanner d = new Scanner(System.in);
-	        int piktball = d.nextInt();
-	        System.out.println(piktball);
+			System.out.println("Please choose a lucky number :");
+	        Scanner scanner = new Scanner(System.in);
+	        int piktball = scanner.nextInt();
+	        
+	    
 	        piktballglobal = piktball;
+	        
+	        System.out.println("Please amount to bet each round");
+	        Scanner scanner1 = new Scanner(System.in);
+	        int bet = scanner1.nextInt();
+	        globalbet = bet;
 	        runMenu();
 			}
+		
+		
 		
 		public void stopBall(){
 	timer.cancel();
