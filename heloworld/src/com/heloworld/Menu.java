@@ -51,9 +51,9 @@ public class Menu {
 				break;
 			case 2:
 			
-			int x=	loadCredit();
+			usercredit=	loadCredit();
 			System.out.print("You have loaded: ");
-			System.out.println(x);
+			System.out.println(usercredit);
 			break;
 			
 			case 3:
@@ -99,11 +99,16 @@ public class Menu {
 		    	    rand = r.nextInt((max - min) + 1) + min;	    
 		    	    System.out.print("Last Winning Number :");
 		    	    System.out.println(rand); // Roulette Number
-		           
-		    	    if (usercredit == rand) { System.out.println("WINNER"); 
+		    		System.out.println(usercredit);
+		    	    
+		    		if (piktballglobal == rand) { 
+		    			System.out.println("WINNER");
+		    			//Insert credits and losses here
+		    			usercredit = usercredit +1; 
+		    		}
 		     }
 		}
-		}
+		
 				
 		static int loadCredit() {
 			System.out.println("Please enter user credit to load");
