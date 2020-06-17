@@ -74,16 +74,24 @@ public class Menu {
 		
 		private void printHeader () {
 			System.out.println("---------------------------------------------");
+			int x = 0;
 			System.out.println("-----------------Roulette--------------------");
 			System.out.println("---------------------------------------------");
+			System.out.println("---------------------------------------------");
+			System.out.println("--once started, a lucky number will be drawn-");
+			System.out.println("------------every 30 seconds.----------------");
+			System.out.println("---------------------------------------------");
+			
+			
 		}
 		
 		private void printMenu () {
 			System.out.println("Please make a selection");
-			System.out.println("1 : Start Ball -> Will pick lucky number every 30 seconds");
+			System.out.println("1 : Start Ball ");
 			System.out.println("2 : Load Credit");
 			System.out.println("3 : Pick  ball and bet");
 			System.out.println("4 : Stop Ball");
+			System.out.println("9 : View Stats");
 			System.out.println("0 : Exit");
 			System.out.println("\n");
 		}
@@ -100,21 +108,22 @@ public class Menu {
 		    	int rand=0, min=0, max = 36;
 		    	    Random r = new Random();
 		    	    rand = r.nextInt((max - min) + 1) + min;	    
-		    	    System.out.print("You are bertting :");
+		    	    System.out.print("You are betting :");
 		    	    System.out.println(globalbet); 
 		    	    System.out.print("Last Number Chosen :");
 		    	    System.out.println(piktballglobal);
-		    	    System.out.print("Last Winning Number :");
+		    	    System.out.print("Last Winning Number                        :");
 		    	    System.out.println(rand); // Roulette Number
 		    	  
 		    	    if (piktballglobal == rand) { 
 		    			System.out.println("WINNER");
 		    			//Insert credits and losses here
-		    			usercredit = usercredit +1; 
+		    			usercredit = usercredit *36; 
 		    		}else 
 		    			{
 		    			
 		    			System.out.println("LOSER");
+		    			
 		    			
 		    			}
 		    	    System.out.print("You now have :");
@@ -126,11 +135,12 @@ public class Menu {
 		
 				
 		static int loadCredit() {
-			System.out.println("Please enter user credit to load");
+			//Do error checking on entry here. Only numbers from 0.00 - whatever, no characters
+			//convert wallet and credit to not integer
+			System.out.println("Please enter the amount of credit to load");
 	        Scanner d = new Scanner(System.in);
 	        int usercredit = d.nextInt();
-	        return usercredit;
-			
+	        return usercredit;	
 		}
 		
 		
@@ -152,7 +162,7 @@ public class Menu {
 		
 		
 		public void stopBall(){
-	timer.cancel();
+			timer.cancel();
 			return;
 			
 		}
