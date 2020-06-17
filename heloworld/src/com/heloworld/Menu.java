@@ -15,6 +15,7 @@ import com.heloworld.CountDown.DisplayCountdown;
 
 public class Menu {
 	public int globalbet,usercredit,piktballglobal = -1;
+	List<String> myList = new ArrayList<String>();
 	Timer timer;
 		boolean exit;
 		int stoptimer = -1;
@@ -27,15 +28,20 @@ public class Menu {
 			printHeader();
 			while(!exit) {
 				loadUser();
+				
+				int choice1  = getInput();
+				loadPlayer(choice1);
+				
+				
 				printMenu();
-				int choice  = getInput();
-				performAction(choice);
+				int choice2  = getInput();
+				performAction(choice2);
 			}
 		}
 		
-		private void loadUser() {
+		public void loadUser() {
 			BufferedReader in = null;
-			List<String> myList = new ArrayList<String>();
+	//	List<String> myList = new ArrayList<String>();
 			try {   
 			    in = new BufferedReader(new FileReader("output.txt"));
 			    String str;
@@ -62,6 +68,22 @@ public class Menu {
 			    System.out.println(myList.get(i));
 			}  
 		}
+		
+		public void loadPlayer(int choice) {
+			switch(choice) {
+			case 0 : 
+				exit = true;
+			    System.out.println(myList.get(0));
+				break;
+			case 1:
+				startBall();
+				break;
+
+			default: 
+				System.out.println("Unknown Error");
+			}
+		}
+		
 		
 		private int getInput() {
 			 Scanner kb = new Scanner (System.in);
