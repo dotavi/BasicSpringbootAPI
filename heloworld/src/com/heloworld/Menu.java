@@ -1,5 +1,11 @@
 package com.heloworld;
 
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 import java.util.Scanner;
 import java.util.Timer;
@@ -20,10 +26,41 @@ public class Menu {
 		public void runMenu() {
 			printHeader();
 			while(!exit) {
+				loadUser();
 				printMenu();
 				int choice  = getInput();
 				performAction(choice);
 			}
+		}
+		
+		private void loadUser() {
+			BufferedReader in = null;
+			List<String> myList = new ArrayList<String>();
+			try {   
+			    in = new BufferedReader(new FileReader("output.txt"));
+			    String str;
+			    while ((str = in.readLine()) != null) {
+			        myList.add(str);
+			    }
+			} catch (FileNotFoundException e) {
+			    e.printStackTrace();
+			} catch (IOException e) {
+			    e.printStackTrace();
+			} finally {
+			    if (in != null) {
+			        try {
+						in.close();
+					} catch (IOException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+			    }
+			}
+			for(int i = 0; i < myList.size(); i++) {   
+			    System.out.print("User Number : ");
+				System.out.println(i);
+			    System.out.println(myList.get(i));
+			}  
 		}
 		
 		private int getInput() {
