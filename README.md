@@ -32,3 +32,17 @@ The ktom endpoint should produce, when given an input amount in kilometers, an o
 Part 2 – Console Roulette
 
 See the attached pdf file.
+
+
+Developer Notes:
+
+1. Submitted project as is for now.
+
+2. Updates to come : Java Roulette Game ; loaded user, update wallet to chosen user at the beginning -> Assign chosen user, retrieved arraylist amount, and convert this to the global wallet.....Upon exit of the application, add in the save file module
+-add more error checking
+
+3. This is the first time im using Spring Boot..Will Update code shortly
+- Add in error checking on supplied Get?xxx value
+
+
+
