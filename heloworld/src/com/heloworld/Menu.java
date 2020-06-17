@@ -15,11 +15,14 @@ import com.heloworld.CountDown.DisplayCountdown;
 
 public class Menu {
 	public int globalbet,usercredit,piktballglobal = -1;
-	List<String> myList = new ArrayList<String>();
+	static List<String> myList = new ArrayList<String>();
 	Timer timer;
 		boolean exit;
 		int stoptimer = -1;
 		public static void main(String[] args) {
+			loadUser();
+			int choice1  = getInput();
+			loadPlayer(choice1);
 			Menu menu = new Menu();
 			menu.runMenu();
 		}
@@ -27,10 +30,7 @@ public class Menu {
 		public void runMenu() {
 			printHeader();
 			while(!exit) {
-				loadUser();
 				
-				int choice1  = getInput();
-				loadPlayer(choice1);
 				
 				
 				printMenu();
@@ -39,9 +39,8 @@ public class Menu {
 			}
 		}
 		
-		public void loadUser() {
+		public static void loadUser() {
 			BufferedReader in = null;
-	//	List<String> myList = new ArrayList<String>();
 			try {   
 			    in = new BufferedReader(new FileReader("output.txt"));
 			    String str;
@@ -62,6 +61,9 @@ public class Menu {
 					}
 			    }
 			}
+			
+			System.out.println("Please choose your stored user number : ");
+			
 			for(int i = 0; i < myList.size(); i++) {   
 			    System.out.print("User Number : ");
 				System.out.println(i);
@@ -69,14 +71,18 @@ public class Menu {
 			}  
 		}
 		
-		public void loadPlayer(int choice) {
+		public static void loadPlayer(int choice) {
 			switch(choice) {
 			case 0 : 
-				exit = true;
-			    System.out.println(myList.get(0));
+			
+			    System.out.print("You chose player : ");
+				System.out.println(myList.get(0));
+				//
 				break;
 			case 1:
-				startBall();
+			
+			    System.out.print("You chose player : ");
+				System.out.println(myList.get(1));
 				break;
 
 			default: 
@@ -85,7 +91,7 @@ public class Menu {
 		}
 		
 		
-		private int getInput() {
+		private static int getInput() {
 			 Scanner kb = new Scanner (System.in);
 			int choice = -1;
 			while (choice < 0 ) {

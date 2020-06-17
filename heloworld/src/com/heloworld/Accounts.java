@@ -67,7 +67,8 @@ public class Accounts {
     public static void main(String args[]) {
         Accounts Writer = new Accounts();
         ArrayList<Account> datArrayList = new ArrayList<Account>();
-        Account account = Writer.new Account(" Name" , " 100000");
+        Account account = Writer.new Account("Avi" , " 5000");
+      //  Account account2 = Writer.new Account("Tom" , " 1000");
         datArrayList.add(account);
 
         try {
