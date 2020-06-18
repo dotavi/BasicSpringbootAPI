@@ -45,4 +45,7 @@ Developer Notes:
 - Add in error checking on supplied Get?xxx value
 
 
+Latest Update : I recreated the project, under the workspace temptest....The logic is still exactly the same.
+I was have compile issues, due to moving and refactoring code.
+
 
