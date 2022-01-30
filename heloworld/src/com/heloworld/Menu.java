@@ -139,7 +139,6 @@ public class Menu {
 		
 		private void printHeader () {
 			System.out.println("---------------------------------------------");
-			int x = 0;
 			System.out.println("-----------------Roulette--------------------");
 			System.out.println("---------------------------------------------");
 			System.out.println("---------------------------------------------");
