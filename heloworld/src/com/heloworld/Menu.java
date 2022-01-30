@@ -11,8 +11,6 @@ import java.util.Scanner;
 import java.util.Timer;
 import java.util.TimerTask;
 
-import com.heloworld.CountDown.DisplayCountdown;
-
 public class Menu {
 	public int globalbet,usercredit,piktballglobal = -1;
 	static List<String> myList = new ArrayList<String>();
@@ -56,7 +54,7 @@ public class Menu {
 			        try {
 						in.close();
 					} catch (IOException e) {
-						// TODO Auto-generated catch block
+						
 						e.printStackTrace();
 					}
 			    }
@@ -92,17 +90,18 @@ public class Menu {
 		
 		
 		private static int getInput() {
-			 Scanner kb = new Scanner (System.in);
-			int choice = -1;
-			while (choice < 0 ) {
-				try {
-					System.out.println("Enter Choice ");
-					choice = Integer.parseInt(kb.nextLine());
-				}
-				catch (NumberFormatException e) {
-					System.out.println("Invalid selection");
-				}
-			}return choice;
+			 try (Scanner kb = new Scanner (System.in)) {
+				int choice = -1;
+				while (choice < 0 ) {
+					try {
+						System.out.println("Enter Choice ");
+						choice = Integer.parseInt(kb.nextLine());
+					}
+					catch (NumberFormatException e) {
+						System.out.println("Invalid selection");
+					}
+				}return choice;
+			}
 		} 
 		
 		private void performAction(int choice) {
@@ -202,24 +201,26 @@ public class Menu {
 			//Do error checking on entry here. Only numbers from 0.00 - whatever, no characters
 			//convert wallet and credit to not integer
 			System.out.println("Please enter the amount of credit to load");
-	        Scanner d = new Scanner(System.in);
-	        int usercredit = d.nextInt();
-	        return usercredit;	
+	        try (Scanner d = new Scanner(System.in)) {
+				int usercredit = d.nextInt();
+				return usercredit;
+			}	
 		}
 		
 		
 		private void pickBall(){
 			System.out.println("Please choose a lucky number :");
-	        Scanner scanner = new Scanner(System.in);
-	        int piktball = scanner.nextInt();
-	        
-	    
-	        piktballglobal = piktball;
-	        
+	        try (Scanner scanner = new Scanner(System.in)) {
+				int piktball = scanner.nextInt();
+				
+   
+				piktballglobal = piktball;
+			}
 	        System.out.println("Please amount to bet each round");
-	        Scanner scanner1 = new Scanner(System.in);
-	        int bet = scanner1.nextInt();
-	        globalbet = bet;
+	        try (Scanner scanner1 = new Scanner(System.in)) {
+				int bet = scanner1.nextInt();
+				globalbet = bet;
+			}
 	        runMenu();
 			}
 		
