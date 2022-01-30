@@ -15,7 +15,6 @@ class DisplayCountdown extends TimerTask {
 	int seconds = 60;
 @Override
 public void run() {
-	// TODO Auto-generated method stub
 	System.out.println("PRints every 10sec");
 }
 
