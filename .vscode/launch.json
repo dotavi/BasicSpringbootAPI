@@ -1,0 +1,24 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Spring Boot-TemptestApplication<temptest>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "console": "internalConsole",
+            "mainClass": "com.avi.temptest.TemptestApplication",
+            "projectName": "temptest",
+            "args": ""
+        },
+        {
+            "type": "java",
+            "name": "Spring Boot-Application<demo>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "console": "internalConsole",
+            "mainClass": "com.avi.Application",
+            "projectName": "demo",
+            "args": ""
+        }
+    ]
+}
