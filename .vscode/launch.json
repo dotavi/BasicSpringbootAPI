@@ -2,6 +2,41 @@
     "configurations": [
         {
             "type": "java",
+            "name": "Launch Accounts",
+            "request": "launch",
+            "mainClass": "com.heloworld.Accounts",
+            "projectName": "heloworld"
+        },
+        {
+            "type": "java",
+            "name": "Launch CountDown",
+            "request": "launch",
+            "mainClass": "com.heloworld.CountDown",
+            "projectName": "heloworld"
+        },
+        {
+            "type": "java",
+            "name": "Launch helloworld",
+            "request": "launch",
+            "mainClass": "com.heloworld.helloworld",
+            "projectName": "heloworld"
+        },
+        {
+            "type": "java",
+            "name": "Launch loaduser",
+            "request": "launch",
+            "mainClass": "com.heloworld.loaduser",
+            "projectName": "heloworld"
+        },
+        {
+            "type": "java",
+            "name": "Launch Menu",
+            "request": "launch",
+            "mainClass": "com.heloworld.Menu",
+            "projectName": "heloworld"
+        },
+        {
+            "type": "java",
             "name": "Spring Boot-TemptestApplication<temptest>",
             "request": "launch",
             "cwd": "${workspaceFolder}",

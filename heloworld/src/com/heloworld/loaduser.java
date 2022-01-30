@@ -21,7 +21,7 @@ public class loaduser {
 		BufferedReader in = null;
 		List<String> myList = new ArrayList<String>();
 		try {   
-		    in = new BufferedReader(new FileReader("output.txt"));
+		    in = new BufferedReader(new FileReader("users.txt"));
 		    String str;
 		    while ((str = in.readLine()) != null) {
 		        myList.add(str);
